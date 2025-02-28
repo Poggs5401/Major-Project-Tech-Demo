@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
+using Unity.VisualScripting;
 
 public enum PlayerState
 {
@@ -24,7 +25,10 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public FloatValue currentHealth;
     public SignalObject playerHealthSignal;
-    // Start is called before the first frame update
+    public Inventory playerInventory;
+    public SpriteRenderer receivedItemSprite;
+
+
     void Start()
     {
         currentState = PlayerState.walk;
@@ -37,6 +41,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(currentState == PlayerState.interact)
+        {
+            return;
+        }
+
         positionChange = Vector3.zero;
         positionChange.x = Input.GetAxisRaw("Horizontal");
         positionChange.y = Input.GetAxisRaw("Vertical");
@@ -60,8 +69,32 @@ private IEnumerator AttackCo()
     yield return null;
     animator.SetBool("attacking", false);
     yield return new WaitForSeconds(0.3f);
+
+    if(currentState != PlayerState.interact)
+    {
     currentState = PlayerState.walk;
+    }
 }
+
+    public void RaiseItem()
+    {
+        if(playerInventory.currentItem != null)
+        {
+            if(currentState != PlayerState.interact)
+            {
+            animator.SetBool("receiveItem", true);
+            currentState = PlayerState.interact;
+            receivedItemSprite.sprite = playerInventory.currentItem.itemSprite; 
+            } else {
+                animator.SetBool("receiveItem", false);
+                currentState = PlayerState.idle;
+                receivedItemSprite.sprite = null;
+                playerInventory.currentItem = null;
+            }            
+        }
+
+
+    }
 
     void UpdateAnimationAndMove()
     {

@@ -10,5 +10,18 @@ public class Inventory : ScriptableObject
     public List<Item> items = new List<Item>();
     public int numberOfKeys;
 
+    public void AddItem(Item itemToAdd)
+    {
+        if(itemToAdd.isKey)
+        {
+            numberOfKeys ++;
+        } else{
+            if(!items.Contains(itemToAdd))
+            {
+                items.Add(itemToAdd);
+            }
+        }
+    }
+
 
 }

@@ -67,6 +67,7 @@ public class TreasureChest : Interactable
         {
             context.Raise();
             playerInRange = false;
+            dialogBox.SetActive(false);
         }
     }
 }

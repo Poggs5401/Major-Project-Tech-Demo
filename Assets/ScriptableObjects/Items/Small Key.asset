@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Small Key
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: aa137aad5c81e104c9757777300b36e6, type: 3}
-  itenDescription: Hey, you found a key! There must be a door nearby...
+  itemDescription: Hey, you found a key! There must be a door nearby...
   isKey: 1

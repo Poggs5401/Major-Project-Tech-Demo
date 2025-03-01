@@ -4644,7 +4644,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &228065384
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5233,7 +5233,6 @@ GameObject:
   - component: {fileID: 581298620}
   - component: {fileID: 581298623}
   - component: {fileID: 581298622}
-  - component: {fileID: 581298621}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5257,6 +5256,8 @@ MonoBehaviour:
   speed: 4
   currentHealth: {fileID: 11400000, guid: f25fcf795ee4a484983c0638cba2e048, type: 2}
   playerHealthSignal: {fileID: 11400000, guid: 2221e4857f1b90f48bec5711926c2d91, type: 2}
+  playerInventory: {fileID: 11400000, guid: 088d37e87b88fa84b851371baab606a6, type: 2}
+  receivedItemSprite: {fileID: 1180432035}
 --- !u!61 &581298615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5423,34 +5424,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.98}
   m_EdgeRadius: 0
---- !u!114 &581298621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581298613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba05b45eba97c74bbb4ff0060cf197e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 27926def989540b4d932d79ec2332f3c, type: 2}
-  signalEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 581298623}
-        m_TargetAssemblyTypeName: ContextClue, Assembly-CSharp
-        m_MethodName: Disable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &581298622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5469,7 +5442,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 581298623}
         m_TargetAssemblyTypeName: ContextClue, Assembly-CSharp
-        m_MethodName: Enable
+        m_MethodName: ChangeContext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5492,6 +5465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contextClue: {fileID: 26513956}
+  contextActive: 0
 --- !u!1 &590152686
 GameObject:
   m_ObjectHideFlags: 0
@@ -5996,11 +5970,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   context: {fileID: 11400000, guid: eda73ccdc862e1f478c63154155b1a6f, type: 2}
   playerInRange: 0
-  contents: {fileID: 0}
+  contents: {fileID: 11400000, guid: 8e9bf490a03a009448f185745ab7e661, type: 2}
+  playerInventory: {fileID: 11400000, guid: 088d37e87b88fa84b851371baab606a6, type: 2}
   isOpen: 0
-  raiseItem: {fileID: 0}
-  dialogWindow: {fileID: 0}
-  dialogText: {fileID: 0}
+  raiseItem: {fileID: 11400000, guid: 726bc8061408b334c88d2dc01b076335, type: 2}
+  dialogBox: {fileID: 812929920}
+  dialogText: {fileID: 228065383}
 --- !u!61 &961474182
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9022,7 +8997,7 @@ GameObject:
   - component: {fileID: 1180432035}
   - component: {fileID: 1180432034}
   m_Layer: 0
-  m_Name: Received Item
+  m_Name: ReceivedItem
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9058,7 +9033,19 @@ MonoBehaviour:
   signal: {fileID: 11400000, guid: 726bc8061408b334c88d2dc01b076335, type: 2}
   signalEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581298614}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: RaiseItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &1180432035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9097,9 +9084,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 256032803
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

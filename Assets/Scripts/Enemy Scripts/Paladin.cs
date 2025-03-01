@@ -7,14 +7,12 @@ using Vector2 = UnityEngine.Vector2;
 
 public class Paladin : Enemy
 {
-    public Rigidbody2D rigidBody;
 
     public Transform target;
     public float chaseRadius;
     public float attackRadius;
     public Transform homePosition;
-    public Animator anim;
-    // Start is called before the first frame update
+    
     void Start()
     {
         currentState = EnemyState.idle;

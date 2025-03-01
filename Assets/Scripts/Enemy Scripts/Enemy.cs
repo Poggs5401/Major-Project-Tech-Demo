@@ -19,18 +19,41 @@ public class Enemy : MonoBehaviour
     public string enemyName;
     public int baseAttack;
     public float moveSpeed;
+    public GameObject deathEffect;
+    public Animator anim;
+    public Rigidbody2D rigidBody;
 
     private void Awake()
     {
         health = maxHealth.initialValue;
+        anim = GetComponent<Animator>();
+        rigidBody = GetComponent<Rigidbody2D>();        
     }
 
     private void TakeDamage(float damage){
         health -= damage;
         if(health <= 0)
         {
-            this.gameObject.SetActive(false);
+            DeathEffect();
         }
+    }
+
+    private void DeathEffect(){
+        if (anim != null)
+        {
+            anim.SetFloat("moveX", rigidBody.velocity.x);
+            anim.SetFloat("moveY", rigidBody.velocity.y);
+            anim.SetTrigger("Death");
+
+            GetComponent<Collider2D>().enabled = false;
+            rigidBody.velocity = Vector2.zero;
+
+            Destroy(gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
+        }
+        // else
+        // {
+        //     Destroy(gameObject);
+        // }
     }
 
     public void Knock(Rigidbody2D rigidBody, float knockTime, float damage)

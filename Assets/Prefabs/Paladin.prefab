@@ -175,11 +175,13 @@ MonoBehaviour:
   enemyName: Ashen Knight
   baseAttack: 1
   moveSpeed: 2
+  deathEffect: {fileID: 0}
+  anim: {fileID: 6847897189401757009}
+  rigidBody: {fileID: 0}
   target: {fileID: 0}
   chaseRadius: 4
   attackRadius: 1
   homePosition: {fileID: 0}
-  anim: {fileID: 6847897189401757009}
 --- !u!61 &6847897189401757023
 BoxCollider2D:
   m_ObjectHideFlags: 0

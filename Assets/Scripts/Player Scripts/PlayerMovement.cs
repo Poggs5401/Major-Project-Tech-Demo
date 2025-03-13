@@ -18,17 +18,24 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Audio Sources")]
+    public AudioSource swordSwing;
+
+    [Header("State Machine")]
     public PlayerState currentState;
+
+    [Header("Player Stats")]
     public float speed;
     private Rigidbody2D playerRigidBody;
     private Vector3 positionChange;
     private Animator animator;
     public FloatValue currentHealth;
-    public SignalObject playerHealthSignal;
+    
+    [Header("Signals")]
     public Inventory playerInventory;
     public SpriteRenderer receivedItemSprite;
     public SignalObject playerHit;
-
+    public SignalObject playerHealthSignal;
 
     void Start()
     {
@@ -67,6 +74,12 @@ private IEnumerator AttackCo()
 {
     animator.SetBool("attacking", true);
     currentState = PlayerState.attack;
+    
+    if (swordSwing != null)
+    {   
+        swordSwing.Play();
+    }
+
     yield return null;
     animator.SetBool("attacking", false);
     yield return new WaitForSeconds(0.3f);

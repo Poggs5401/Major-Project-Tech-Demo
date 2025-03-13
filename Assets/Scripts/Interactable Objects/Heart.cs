@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Heart : Powerup
 {
+    [Header("Audio Sources")]
+    public AudioSource heartPickup;
+
+    [Header("Heart Stats")]
     public FloatValue playerHealth;
     public float healAmount;
     public FloatValue heartContainers;
@@ -24,12 +28,19 @@ public class Heart : Powerup
     {
         if(other.CompareTag("Player") && !other.isTrigger)
         {
+
             playerHealth.RuntimeValue += healAmount;
             if(playerHealth.initialValue > heartContainers.RuntimeValue * 2f)
             {
                 playerHealth.initialValue = heartContainers.RuntimeValue * 2f;
             }
             powerupSignal.Raise();
+
+            if (heartPickup != null)
+            {   
+                heartPickup.Play();
+            }         
+              
             Destroy(this.gameObject);
         }
     }

@@ -7,6 +7,10 @@ using UnityEngine.UIElements;
 public class Knockback : MonoBehaviour
 {
 
+    [Header("Audio Sources")]
+    public AudioSource playerTakeDamage;
+
+    [Header("Knockback Values")]
     public float thrust;
     public float knockTime;
     public float damage;
@@ -39,6 +43,11 @@ public class Knockback : MonoBehaviour
                     {
                         hit.GetComponent<PlayerMovement>().currentState = PlayerState.stagger;
                         other.GetComponent<PlayerMovement>().Knock(knockTime, damage);
+
+                        if (playerTakeDamage != null)
+                        {   
+                            playerTakeDamage.Play();
+                        }
                     }
                     
                 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TreasureChest : Interactable
 {
+    public AudioSource openChest;
     public Item contents;
     public Inventory playerInventory;
     public bool isOpen;
@@ -44,6 +45,11 @@ public class TreasureChest : Interactable
         context.Raise();
         isOpen = true;
         anim.SetBool("opened", true);
+        
+        if (openChest != null)
+            {   
+                openChest.Play();
+            } 
     }
 
     public void ChestAlreadyOpen()

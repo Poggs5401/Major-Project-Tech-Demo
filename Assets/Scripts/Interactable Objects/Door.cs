@@ -11,7 +11,10 @@ public enum DoorType
 
 public class Door : Interactable
 {
-    [Header("Door variables")]
+    [Header("Audio Sources")]
+    public AudioSource doorOpen;
+
+    [Header("Door Variables")]
     public DoorType thisDoorType;
     public bool open = false;
     public Inventory playerInventory;
@@ -26,6 +29,10 @@ public class Door : Interactable
             {
                 if(playerInventory.numberOfKeys > 0)
                 {
+                    if (doorOpen != null)
+                    {   
+                        doorOpen.Play();
+                    } 
                     playerInventory.numberOfKeys--;
                     Open();
                 }

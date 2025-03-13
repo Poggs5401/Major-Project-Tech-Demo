@@ -11,7 +11,6 @@ public class Paladin : Enemy
     public Transform target;
     public float chaseRadius;
     public float attackRadius;
-    public Transform homePosition;
     
     void Start()
     {

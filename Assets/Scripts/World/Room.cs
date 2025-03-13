@@ -5,7 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public Enemy[] enemies;
-    // public pot[] pots;
+    public Pot[] pots;
     public GameObject virtualCamera;
 
     public virtual void OnTriggerEnter2D(Collider2D other)

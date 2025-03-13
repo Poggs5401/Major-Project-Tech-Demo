@@ -13,15 +13,26 @@ public enum EnemyState
 public class Enemy : MonoBehaviour
 {
 
+    [Header("State")]
     public EnemyState currentState;
+
+    [Header("Enemy Stats")]
     public FloatValue maxHealth;
     public float health;
     public string enemyName;
     public int baseAttack;
     public float moveSpeed;
+    public Vector2 homePosition;
+
+    [Header("Death Effects")]
     public GameObject deathEffect;
     public Animator anim;
+
+    [Header("Rigid Body 2D")]
     public Rigidbody2D rigidBody;
+
+    [Header("Death Signals")]
+    public SignalObject roomSignal;
 
     private void Awake()
     {
@@ -35,6 +46,7 @@ public class Enemy : MonoBehaviour
         if(health <= 0)
         {
             DeathEffect();
+            roomSignal.Raise();
         }
     }
 

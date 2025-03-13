@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -969,10 +981,10 @@ TextureImporter:
       name: objects_41
       rect:
         serializedVersion: 2
-        x: 2
-        y: 258
-        width: 11
-        height: 11
+        x: 0
+        y: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -990,10 +1002,10 @@ TextureImporter:
       name: objects_42
       rect:
         serializedVersion: 2
-        x: 19
-        y: 258
-        width: 10
-        height: 11
+        x: 16
+        y: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1011,10 +1023,10 @@ TextureImporter:
       name: objects_43
       rect:
         serializedVersion: 2
-        x: 36
-        y: 243
-        width: 9
-        height: 26
+        x: 32
+        y: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1032,10 +1044,10 @@ TextureImporter:
       name: objects_44
       rect:
         serializedVersion: 2
-        x: 51
-        y: 258
-        width: 10
-        height: 11
+        x: 48
+        y: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3139,6 +3151,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      objects_127: 1373594238
       objects_118: -538033922
       objects_98: -1347064338
       objects_84: 1722009371
@@ -3154,7 +3167,6 @@ TextureImporter:
       objects_41: 1229501333
       objects_89: -580066799
       objects_109: -498086798
-      objects_128: -1752257850
       objects_3: -1529480272
       objects_119: -2026950554
       objects_18: -2075812582
@@ -3204,9 +3216,9 @@ TextureImporter:
       objects_131: 1614998698
       objects_107: -89012793
       objects_87: 2038400398
-      objects_104: 1463018520
       objects_80: 674560935
       objects_7: 1455057995
+      objects_104: 1463018520
       objects_22: -1709195312
       objects_47: 580129930
       objects_42: 1335879351
@@ -3280,9 +3292,9 @@ TextureImporter:
       objects_142: 803464338
       objects_61: 1015329018
       objects_88: -66731215
-      objects_127: 1373594238
       objects_4: 1844052742
       objects_20: -2040184001
+      objects_128: -1752257850
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

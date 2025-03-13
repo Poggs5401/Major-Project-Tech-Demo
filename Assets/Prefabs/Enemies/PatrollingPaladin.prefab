@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6082467044614064984}
   - component: {fileID: 6082467044614064980}
   - component: {fileID: 6082467044614064987}
-  - component: {fileID: 6082467044614064981}
+  - component: {fileID: 5239859959949786293}
   - component: {fileID: 6082467044614064982}
   - component: {fileID: 6082467044614064983}
   m_Layer: 0
@@ -157,7 +157,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.87133414, y: 0.38489592}
   m_EdgeRadius: 0
---- !u!114 &6082467044614064981
+--- !u!114 &5239859959949786293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6082467044614064991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a536f433f8719d4fa997bb76e693e69, type: 3}
+  m_Script: {fileID: 11500000, guid: 836b7ac350e3d554eb692add196dc421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
@@ -175,11 +175,14 @@ MonoBehaviour:
   enemyName: Ashen Knight
   baseAttack: 1
   moveSpeed: 2
+  deathEffect: {fileID: 0}
+  anim: {fileID: 6082467044614064984}
+  rigidBody: {fileID: 0}
   target: {fileID: 0}
   chaseRadius: 4
   attackRadius: 1
   homePosition: {fileID: 0}
-  anim: {fileID: 6082467044614064984}
+  boundary: {fileID: 0}
 --- !u!61 &6082467044614064982
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public SignalObject playerHealthSignal;
     public Inventory playerInventory;
     public SpriteRenderer receivedItemSprite;
+    public SignalObject playerHit;
 
 
     void Start()
@@ -130,6 +131,8 @@ private IEnumerator AttackCo()
 
         private IEnumerator KnockCo(float knockTime)
     {
+        playerHit.Raise();
+
         if(playerRigidBody != null)
         {
             yield return new WaitForSeconds(knockTime);

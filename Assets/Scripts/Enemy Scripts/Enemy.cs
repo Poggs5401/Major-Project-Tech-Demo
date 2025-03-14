@@ -25,8 +25,11 @@ public class Enemy : MonoBehaviour
     public Vector2 homePosition;
 
     [Header("Death Effects")]
-    public GameObject deathEffect;
+    public AnimationClip deathAnimation;
     public Animator anim;
+
+    [Header("Audio Sources")]
+    public AudioSource enemyDeath;
 
     [Header("Rigid Body 2D")]
     public Rigidbody2D rigidBody;
@@ -34,11 +37,17 @@ public class Enemy : MonoBehaviour
     [Header("Death Signals")]
     public SignalObject roomSignal;
 
+    private float deathAnimationDuration = 0.5f;
+
     private void Awake()
     {
         health = maxHealth.initialValue;
-        anim = GetComponent<Animator>();
-        rigidBody = GetComponent<Rigidbody2D>();        
+        rigidBody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>(); // Get the Animator component
+        if(anim == null)
+        {
+            Debug.LogError("Animator component not found on " + gameObject.name);
+        }        
     }
 
     private void TakeDamage(float damage){
@@ -46,26 +55,28 @@ public class Enemy : MonoBehaviour
         if(health <= 0)
         {
             DeathEffect();
-            roomSignal.Raise();
         }
     }
 
     private void DeathEffect(){
+
         if (anim != null)
         {
-            anim.SetFloat("moveX", rigidBody.velocity.x);
-            anim.SetFloat("moveY", rigidBody.velocity.y);
             anim.SetTrigger("Death");
 
-            GetComponent<Collider2D>().enabled = false;
-            rigidBody.velocity = Vector2.zero;
+            if (enemyDeath != null)
+            {   
+                enemyDeath.Play();
+            }
 
-            Destroy(gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
+            StartCoroutine(DeactivateAfterAnimation());
         }
-        // else
-        // {
-        //     Destroy(gameObject);
-        // }
+    }
+
+    IEnumerator DeactivateAfterAnimation()
+    {
+        yield return new WaitForSeconds(deathAnimationDuration);
+        this.gameObject.SetActive(false);
     }
 
     public void Knock(Rigidbody2D rigidBody, float knockTime, float damage)

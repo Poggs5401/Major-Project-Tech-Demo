@@ -77,6 +77,11 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(deathAnimationDuration);
         this.gameObject.SetActive(false);
+        EnemyRoom room = GetComponentInParent<EnemyRoom>();
+        if (room != null)
+        {
+            room.CheckEnemies();
+        }
     }
 
     public void Knock(Rigidbody2D rigidBody, float knockTime, float damage)

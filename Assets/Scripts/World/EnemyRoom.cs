@@ -26,9 +26,9 @@ public class EnemyRoom : DungeonRoom
 
     public void CheckEnemies()
     {
-        if (EnemiesActive() == 1)
+        if (EnemiesActive() == 0)
         {
-            CloseDoors();
+            OpenDoors();
         }
     }
 
